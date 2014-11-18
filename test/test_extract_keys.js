@@ -53,4 +53,26 @@ describe('extract keys',function(){
                                  'bar.baz',
                                  'baz'])
     })
+    it('should figure out a doubly nested object and array',function(){
+        var obj={'foo':1,
+                 'bar':{'foo':1,
+                        'bar':{'foo':1,
+                               'bar':[1,2,3,4,5,6,7],
+                               'baz':3},
+                        'baz':3},
+                 'baz':3}
+        extract(obj).should.eql(['foo',
+                                 'bar.foo',
+                                 'bar.bar.foo',
+                                 'bar.bar.bar.0',
+                                 'bar.bar.bar.1',
+                                 'bar.bar.bar.2',
+                                 'bar.bar.bar.3',
+                                 'bar.bar.bar.4',
+                                 'bar.bar.bar.5',
+                                 'bar.bar.bar.6',
+                                 'bar.bar.baz',
+                                 'bar.baz',
+                                 'baz'])
+    })
 })
