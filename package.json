@@ -1,0 +1,30 @@
+{
+  "name": "json2csv",
+  "version": "0.0.1",
+  "description": "Convert arbitrary JSON object to CSV",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "should": "^4.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmarca/json2csv"
+  },
+  "keywords": [
+    "JSON",
+    "CSV"
+  ],
+  "author": "James E. Marca",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/jmarca/json2csv/issues"
+  },
+  "homepage": "https://github.com/jmarca/json2csv"
+}
