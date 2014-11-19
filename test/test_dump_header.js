@@ -26,7 +26,7 @@ describe('dump_header',function(){
                       'bar.baz',
                       'baz']
         var stringifier = stringify()
-        var out = fs.createWriteStream(file, { encoding: null })
+        var out = fs.createWriteStream(file, { encoding: 'utf8' })
         stringifier.pipe(out)
 
         var dumper = dump_header(header)
@@ -45,7 +45,7 @@ describe('dump_header',function(){
         })
         out.on('finish',function(){
             // load the file, make sure
-            fs.readFile('header.csv',{encoding:'utf8'},function(err,data){
+            fs.readFile(file,{encoding:'utf8'},function(err,data){
                 data.should.eql('foo,bar.foo,bar.bar.foo,bar.bar.bar.0,bar.bar.bar.1,bar.bar.bar.2,bar.bar.bar.3,bar.bar.bar.4,bar.bar.bar.5,bar.bar.bar.6,bar.bar.baz,bar.baz,baz\n')
                 return done()
             })
