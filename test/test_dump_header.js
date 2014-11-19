@@ -6,7 +6,10 @@ var fs = require('fs')
 //var csv = require('csv')
 //var csv_writer = csv.stringify()
 var stringify = require('csv-stringify');
-
+var file = 'header.csv'
+after(function(done){
+    fs.unlink(file,done)
+})
 describe('dump_header',function(){
     it('should dump the header, only once',function(done){
         var header = ['foo',
@@ -23,7 +26,7 @@ describe('dump_header',function(){
                       'bar.baz',
                       'baz']
         var stringifier = stringify()
-        var out = fs.createWriteStream('header.csv', { encoding: null })
+        var out = fs.createWriteStream(file, { encoding: null })
         stringifier.pipe(out)
 
         var dumper = dump_header(header)
