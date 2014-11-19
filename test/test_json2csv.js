@@ -1,16 +1,9 @@
 // test extracting keys
 var should = require('should')
-var arrayify = require('../lib/arrayify.js')
-var stringify = require('csv-stringify')
-var dump_header = require('../lib/dump_header.js')
+var json2csv = require('../lib/json2csv.js')
 var fs =  require('fs')
-var file = 'output.csv'
+var file = 'jsonoutput.csv'
 
-var extract = require('../lib/extract_keys.js')
-
-// after(function(done){
-//     //fs.unlink(file,done)
-// })
 var filenum = 0
 describe('basic object dump',function(){
     var file = 'dump'+filenum+'.txt'
@@ -21,6 +14,7 @@ describe('basic object dump',function(){
     it('should write out basic object',function(done){
         var head = ['foo','bar','baz']
         var obj=[]
+
         for(var i=0;i<10;i++){
             var row = {}
             head.forEach(function(k){
@@ -29,16 +23,12 @@ describe('basic object dump',function(){
             })
             obj.push(row)
         }
-        var keys = extract(obj[0]).sort()
-        var stringifier = stringify()
+        (Array.isArray( obj)).should.be.ok
         var out = fs.createWriteStream(file, { encoding: 'utf8' })
-        stringifier.pipe(out)
-        dump_header(keys)(stringifier)
-
-        arrayify(obj,keys,stringifier,'utf8',function(e,d){
-            stringifier.end()
-        })
-        stringifier.on('finish',function(){
+        json2csv({objectlist:obj
+                 ,header:['bar','baz','foo']
+                 ,outstream:out
+                 ,encoding:'utf8'},function(e,d){
             out.end()
         })
         out.on('finish',function(){
@@ -83,14 +73,12 @@ describe('big object dump',function(){
         var head = big_json.features[0].properties.header
         // I only want to print the data part right now
         var dumpdata = big_json.features[0].properties.data
-        var keys = extract(dumpdata[0])
-        var stringifier = stringify()
         var out = fs.createWriteStream(file, { encoding: 'utf8' })
-        stringifier.pipe(out)
-        dump_header(head)(stringifier)
-
-        arrayify(dumpdata,keys,stringifier,'utf8',function(e,d){
-            stringifier.end()
+        json2csv({objectlist:dumpdata
+                 ,header:head
+                 ,outstream:out
+                 ,encoding:'utf8'},function(e,d){
+                                       //out.end()
         })
         out.on('finish',function(){
             fs.readFile(file,{encoding:'utf8'},function(err,data){
