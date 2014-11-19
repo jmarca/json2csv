@@ -79,7 +79,7 @@ describe('big object dump',function(){
         })
     })
 
-    it('should write out big object',function(done){
+    it('should write out big object (which also demonstrates that backpressure works okay)',function(done){
         var head = big_json.features[0].properties.header
         // I only want to print the data part right now
         var dumpdata = big_json.features[0].properties.data
@@ -97,8 +97,8 @@ describe('big object dump',function(){
                 data.trim()
                 var lines = data.split(/\r?\n/);
                 lines.should.have.length(2837)
-                lines.shift().should.eql(["ts","freeway","n","hh","not_hh","o","avg_veh_spd","avg_hh_weight","avg_hh_axles","avg_hh_spd","avg_nh_weight","avg_nh_axles","avg_nh_spd","miles","lane_miles","detector_count","detectors"])
-                lines.shift().should.eql(["2007-01-01 00:00","22",57371.51,2955.49,3035.88,0.027083,69.73,39.12,4.99,60.04,12.95,2.05,61.87,1.45,4.34,24,0])
+                lines.shift().should.eql("ts,freeway,n,hh,not_hh,o,avg_veh_spd,avg_hh_weight,avg_hh_axles,avg_hh_spd,avg_nh_weight,avg_nh_axles,avg_nh_spd,miles,lane_miles,detector_count,detectors")
+                lines.shift().should.eql("2007-01-01 00:00,22,57371.51,2955.49,3035.88,0.027083,69.73,39.12,4.99,60.04,12.95,2.05,61.87,1.45,4.34,24,0")
                 return done()
             })
             return null
