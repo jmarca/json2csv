@@ -68,9 +68,9 @@ describe('basic object dump',function(){
 describe('big object dump',function(){
     var file = 'dump'+filenum+'.txt'
     filenum++
-    // after(function(done){
-    //     fs.unlink(file,done)
-    // })
+    after(function(done){
+        fs.unlink(file,done)
+    })
     var big_json
     before(function(done){
         fs.readFile('test/06059.json',{'encoding':'utf8'},function(err,data){
