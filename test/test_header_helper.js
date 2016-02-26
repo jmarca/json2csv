@@ -4,7 +4,6 @@
 var fs =  require('fs')
 var header_helper = require('../lib/header_helper.js')
 
-var file = 'testing_header_helper.js'
 var should = require('should')
 
 describe('basic object dump',function(){
@@ -24,6 +23,7 @@ describe('basic object dump',function(){
     }
     obj2 = obj[0]
     describe('array of objects',function(){
+        var file = 'testing_header_helperA.js'
         after(function(done){
             fs.unlink(file,done)
         })
@@ -46,6 +46,7 @@ describe('basic object dump',function(){
         })
     })
     describe('singleton object',function(){
+        var file = 'testing_header_helperB.js'
         after(function(done){
             fs.unlink(file,done)
         })

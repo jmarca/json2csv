@@ -75,5 +75,19 @@ describe('extract keys',function(){
                                  'bar.bar.baz',
                                  'bar.baz',
                                  'baz'])
+        extract(obj,true).should.eql(['bar.bar.bar.0',
+                                      'bar.bar.bar.1',
+                                      'bar.bar.bar.2',
+                                      'bar.bar.bar.3',
+                                      'bar.bar.bar.4',
+                                      'bar.bar.bar.5',
+                                      'bar.bar.bar.6',
+                                      'bar.bar.baz',
+                                      'bar.bar.foo',
+                                      'bar.baz',
+                                      'bar.foo',
+                                      'baz',
+                                      'foo'
+                                     ])
     })
 })
