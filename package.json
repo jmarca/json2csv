@@ -8,10 +8,24 @@
   },
   "dependencies": {
     "csv": "^0.4.1",
-    "csv-stringify": "git://github.com/jmarca/node-csv-stringify",
-    "should": "^4.3.0"
+    "csv-stringify": "git://github.com/jmarca/node-csv-stringify"
   },
-  "devDependencies": {},
+  "devDependencies": {
+        "babel-eslint": "^5.0.0",
+        "eslint-plugin-babel": "^3.1.0",
+        "gulp": "^3.9.1",
+        "gulp-babel": "^6.1.2",
+        "gulp-eslint": "^2.0.0",
+        "gulp-istanbul": "^0.10.3",
+        "gulp-jsdoc3": "^0.2.0",
+        "gulp-mocha": "^2.2.0",
+        "gulp-sourcemaps": "^1.6.0",
+        "jsdom": "",
+        "mocha": "^2.4.5",
+        "run-sequence": "^1.1.5",
+        "should": "",
+        "superagent": ""
+  },
   "scripts": {
     "test": "mocha"
   },

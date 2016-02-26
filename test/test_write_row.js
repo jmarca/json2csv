@@ -1,7 +1,9 @@
+/*eslint-env node, mocha */
+
 // test extracting keys
-var should = require('should')
 var extract = require('../lib/extract_keys.js')
 var write_row = require('../lib/write_row.js')
+require('should')
 
 describe('extract keys',function(){
     it('should write out basic object',function(){
