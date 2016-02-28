@@ -217,6 +217,7 @@ describe('different ways of invoking',function(){
                 ,{'key':'lane_miles'}
                 ,{'key':'single_unit_mt'}
                 ,{'key':'combination_mt'}
+                ,{'key':'grid_cells'}
             ]
             header.forEach(function(h,i){
                 h.skip = false
