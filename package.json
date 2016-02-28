@@ -27,7 +27,13 @@
         "superagent": ""
   },
   "scripts": {
-    "test": "mocha"
+    "coveralls": "gulp test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "lint": "gulp lint",
+    "postversion": "git push && git push --tags",
+    "prepublish": "gulp default",
+    "preversion": "echo \"Another version! Keep up the good work!\"",
+    "test": "gulp test",
+    "version": ""
   },
   "repository": {
     "type": "git",
