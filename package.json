@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "csv": "^0.4.1",
-    "csv-stringify": "git://github.com/jmarca/node-csv-stringify"
+    "csv-stringify": ""
   },
   "devDependencies": {
         "babel-eslint": "^5.0.0",
